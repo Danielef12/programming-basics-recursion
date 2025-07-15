@@ -8,8 +8,8 @@ from data import object_list
 
 def get_input() -> Optional[Dict[str, str]]:
     name = validated_input("Enter object name (empty to stop)", False)
-    if name is None:
-        return None
+    if not name:
+        return name
 
     if object_name_exists(name):
         print(f"Warning: an object with name '{name}' already exists!")
@@ -30,7 +30,7 @@ def get_input() -> Optional[Dict[str, str]]:
 def recursive_environment_exploration() -> List[Dict[str, str]]:
     try:
         obj = get_input()
-        if obj is None:
+        if not obj:
             return object_list
         else:
             object_list.append(obj)

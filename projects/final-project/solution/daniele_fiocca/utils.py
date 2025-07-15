@@ -3,12 +3,10 @@ from typing import List, Optional
 from data import object_list
 
 
-def validated_input(message: str, required: bool = True) -> Optional[str]:
+def validated_input(message: str, required: bool = True) -> str:
     value: str = input(message + ": ").strip()
 
-    if value == "" and not required:
-        return None
-    elif value == "" and required:
+    if value == "" and required:
         print("This field is required. Please try again.")
         return validated_input(message, required)
     elif not value.replace(" ", "").isalnum() and not all(
